@@ -39,7 +39,7 @@ public class Ayudante extends Persona{
                     break;
                 }
             else{
-                 Proyecto2.addCalificacion(listaN,rut,tarea,nota);
+                 Asignatura.addCalificacion(listaN,rut,tarea,nota);
                  System.out.println(tarea +" del alumno con rut "+ rut + " ha sido calificada con nota "+ nota);  
                 }
             }
@@ -54,11 +54,28 @@ public class Ayudante extends Persona{
                     break;
                 }
             else{
-                    Proyecto2.addCalificacion(listaN,rut,evaluacion,nota);
+                    Asignatura.addCalificacion(listaN,rut,evaluacion,nota);
                     System.out.println(evaluacion +" del alumno con rut "+ rut + " ha sido calificada con nota "+ nota);
                 }
             }
         }
+    }
+    
+    //Funcion añadir ayudante (rut y nombre)
+    public static void addAyudante(List<Map<String, String>> listaA, Ayudante a){
+        Map<String, String> par= new HashMap<>();
+        par.put("rut",a.getRut());
+        par.put("nombre",a.getNombre());
+        listaA.add(par);
+    }
+    
+    //Función imprimir por pantalla ayudantes
+    public static void mostrarAyudantes(List<Map<String, String>> listaA){
+       for (Map<String, String> par: listaA){
+           String rut= par.get("rut");
+           String nombre= par.get("nombre");
+           System.out.println("Rut: "+rut+", nombre: "+nombre);
+          }
     }
     
 @Override

@@ -4,6 +4,10 @@
  */
 package com.mycompany.proyecto2;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Persona {
     
     //Atributos
@@ -78,6 +82,46 @@ public class Persona {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+    
+     //Función para almacenar personas (rut, nombre y apellido)
+    public static void addPersona(List<Map<String, String>> listaP, Persona p){
+        Map<String, String> par= new HashMap<>();
+        par.put("rut",p.getRut());
+        par.put("nombre",p.getNombre());
+        par.put("apellido",p.getApellidoPaterno());
+        listaP.add(par);
+    }
+    
+    //Función para mostrar personas en pantalla
+    public static void mostrarPersonas(List<Map<String, String>> listaP){
+        for (Map<String, String> par: listaP){
+           String rut= par.get("rut");
+           String nombre= par.get("nombre");
+           String apellido= par.get("apellido");
+           System.out.println("Rut: "+rut+", nombre: "+nombre+ ", apellido: "+apellido);
+          }
+    }
+    
+    //Función para buscar personas por su rut
+    public static String buscarNombrePersona(List<Map<String, String>> listaP, String rutbuscado){
+        for (Map<String, String> par: listaP){
+            if (par.get("rut").equals(rutbuscado)){
+                return par.get("nombre")+" "+par.get("apellido");
+            }
+        }
+      return "";  
+    }
+    
+    //Función para eliminar personas por su rut (Sirve para cuando renuncian o abandonan cargo)
+    public static void eliminarPersona(List<Map<String, String>> listaP, String rutbuscado){
+        for (int i=0; i<listaP.size(); i++){
+            Map<String, String> par= listaP.get(i);
+            if (par.get("rut").equals(rutbuscado)){
+                listaP.remove(i);
+                break;
+            }
+        }
     }
     
     @Override

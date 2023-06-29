@@ -56,10 +56,27 @@ public class Docente extends Persona{
                     break;
                 }
             else{
-                    Proyecto2.addCalificacion(listaN, rut, evaluacion, nota);
+                    Asignatura.addCalificacion(listaN, rut, evaluacion, nota);
                     System.out.println(evaluacion +" del alumno con rut "+ rut + " ha sido calificada con nota "+ nota);
                 }
             }
         }
+    }
+    
+    //Funcion añadir docente (rut y nombre)
+    public static void addDocente(List<Map<String, String>> listaD, Docente d){
+        Map<String, String> par= new HashMap<>();
+        par.put("rut",d.getRut());
+        par.put("nombre",d.getNombre());
+        listaD.add(par);
+    }
+    
+    //Función imprimir por pantalla docentes
+    public static void mostrarDocentes(List<Map<String, String>> listaD){
+       for (Map<String, String> par: listaD){
+           String rut= par.get("rut");
+           String nombre= par.get("nombre");
+           System.out.println("Rut: "+rut+", nombre: "+nombre);
+          }
     }
 }

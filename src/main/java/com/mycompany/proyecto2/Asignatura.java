@@ -59,4 +59,37 @@ public class Asignatura {
            System.out.println("Rut: "+rut+", asignatura: "+asignatura);
           }
     }
+    
+    //Función para añadir calificaciones (tareas o cert)
+    public static void addCalificacion(List<Map<String, String>> listaN, String rut, String evaluación, int nota){
+        Map<String, String> par= new HashMap<>();
+        par.put("rut", rut);
+        par.put("evaluacion",evaluación);
+        par.put("nota", Integer.toString(nota));
+        listaN.add(par);
+    }   
+    
+    //Función para mostrar en pantalla calificaciones
+    public static void mostrarCalificaciones(List<Map<String, String>> listaN){
+    for (Map<String, String> par: listaN){
+        String rut= par.get("rut");
+        String evaluacion= par.get("evaluacion");
+        String nota= par.get("nota");
+        System.out.println("Rut: "+rut+", evaluacion: "+evaluacion+", nota: "+nota);     
+    }
+    }
+    
+    //Función para imprimir agenda de evaluaciones
+    public static void imprimirAgenda(Map<String, List<String>> agenda){
+        for (String asignatura: agenda.keySet()){
+            System.out.println("Asignatura: "+asignatura);
+            List<String> evaluaciones= agenda.get(asignatura);
+            System.out.println("Fechas de evaluación: ");
+            for (String fecha: evaluaciones){
+                System.out.println("- "+fecha);
+            }
+            System.out.println();
+        }
+        
+    }
 }

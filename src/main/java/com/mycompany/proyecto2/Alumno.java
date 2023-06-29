@@ -17,6 +17,6 @@ public class Alumno extends Persona{
         this.carrera = carrera;
     }
 
-    //Métodos
+    //Métodos FALTÓ CREAR ESTE:(
     public void inscribirAsig(String rut, String nombreAsig) {}
 }
